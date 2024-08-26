@@ -105,9 +105,9 @@ Array.prototype.myFind = function (callback) {
     return undefined;
 };
 
-Array.prototype.myFindIndex = function (cb) {
+Array.prototype.myFindIndex = function (callback) {
     for (let i = 0; i < this.length; i++) {
-        if (cb(this[i], i, this)) {
+        if (callback(this[i], i, this)) {
             return i;
         }
     }
@@ -168,7 +168,7 @@ Array.prototype.myUnshift = function () {
 
 // 13. Polyfill for flat method
 Array.prototype.myFlat = function (depth) {
-    let flatten = function (arr, depth) {
+    const flatten = function (arr, depth) {
         return depth > 0
             ? arr.reduce(
                   (acc, val) =>
@@ -177,8 +177,8 @@ Array.prototype.myFlat = function (depth) {
                       ),
                   []
               )
-            : arr.slice();
+            : arr.slice(); // Ensures a shallow copy of the array when depth is 0
     };
 
-    return flatten(this, depth || 1);
+    return flatten(this, depth === undefined ? 1 : depth);
 };
