@@ -182,3 +182,64 @@ Array.prototype.myFlat = function (depth) {
 
     return flatten(this, depth === undefined ? 1 : depth);
 };
+
+// 14. Polyfill for slice method
+Array.prototype.mySlice = function (start = 0, end = this.length) {
+    let ans = [];
+
+    // Handle negative start
+    if (start < 0) {
+        start = Math.max(this.length + start, 0);
+    }
+
+    // Handle negative end
+    if (end < 0) {
+        end = Math.max(this.length + end, 0);
+    }
+
+    for (let i = start; i < end && i < this.length; i++) {
+        ans.push(this[i]);
+    }
+    return ans;
+};
+
+// 15. Polyfill for splice method
+Array.prototype.mySplice = function (start, deleteCount, ...items) {
+    let removed = [];
+    let len = this.length;
+
+    // Handle negative start index
+    if (start < 0) {
+        start = Math.max(len + start, 0);
+    } else {
+        start = Math.min(start, len);
+    }
+
+    // Handle deleteCount
+    if (deleteCount === undefined) {
+        deleteCount = len - start;
+    } else {
+        deleteCount = Math.min(Math.max(deleteCount, 0), len - start);
+    }
+
+    // Remove elements
+    for (let i = 0; i < deleteCount; i++) {
+        removed.push(this[start + i]);
+    }
+
+    // Move elements after the removed ones
+    let itemsToMove = this.slice(start + deleteCount);
+    this.length = start + items.length; // Adjust length for insertion
+
+    // Insert new items
+    for (let i = 0; i < items.length; i++) {
+        this[start + i] = items[i];
+    }
+
+    // Add the remaining elements back
+    for (let i = 0; i < itemsToMove.length; i++) {
+        this[start + items.length + i] = itemsToMove[i];
+    }
+
+    return removed;
+};
