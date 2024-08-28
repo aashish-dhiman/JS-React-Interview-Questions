@@ -1,3 +1,5 @@
+// Q. Create a custom hook which can be used to set and reset cookie and use local storage as a cookie
+
 const useCookies = () => {
     const setCookie = (name, value) => {
         localStorage.setItem(name, JSON.stringify(value));

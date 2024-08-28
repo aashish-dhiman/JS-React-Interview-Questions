@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-const Pagination = ({ currentPage=2, totalPages=10, onPageChange }) => {
+const Pagination = ({ currentPage = 2, totalPages = 10, onPageChange }) => {
     const pages = [];
 
     for (let i = 1; i <= totalPages; i++) {

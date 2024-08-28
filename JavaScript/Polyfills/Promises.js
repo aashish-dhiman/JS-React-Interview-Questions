@@ -39,7 +39,7 @@ Promise.myRace = function (promises) {
         }
 
         promises.forEach((promise) => {
-            Promise.resolve(promise).then(resolve, reject);
+            Promise.resolve(promise).then(resolve, reject).catch(reject);
         });
         // for (let i = 0; i < promises.length; i++) {
         //     Promise.resolve(promises[i]).then(resolve, reject);

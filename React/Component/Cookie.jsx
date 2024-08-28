@@ -1,3 +1,5 @@
+//  Custom component to use cookie hook functionality
+
 import { useState } from "react";
 import useCookies from "./hooks/CookieHook";
 
