@@ -27,6 +27,14 @@ function foo() {
 }
 foo();
 console.log(x); // 1
+/////////////////////
+function foo() {
+    x = 10;
+    function x() {}
+    console.log("x: ", x); // 10
+}
+foo();
+console.log(x); // error x not found, x not in global scope because of function with same name x
 
 // Q4.
 var x = 10;

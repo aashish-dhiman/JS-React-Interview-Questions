@@ -83,3 +83,27 @@ const obj = {};
 setValueByPath(obj, "user.profile.details.firstName", "Aashish");
 console.log(obj.user.profile.details.firstName); // Outputs: "Aashish"
 console.log(JSON.stringify(obj)); // Outputs: "Aashish"
+
+////////////////////////////////////////////////////////
+
+/* Q 3: Given a object containing data of student with their name and score in each subject.
+Calculate the avg marks of each student.
+
+ */
+
+const students = {
+    Alice: { math: 85, english: 70 },
+    Bob: { math: 45, english: 60 },
+    Amit: { math: 35, english: 86 },
+};
+
+// Solution
+const keys = Object.keys(students);
+const studentAvg = keys.map((student) => {
+    const scores = Object.values(students[student]);
+    const avgScore =
+        scores.reduce((acc, mark) => acc + mark, 0) / scores.length;
+
+    return { [student]: avgScore };
+});
+console.log(studentAvg);
