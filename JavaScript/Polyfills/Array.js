@@ -34,7 +34,7 @@ const filtered = students.myFilter((student) => {
 
 console.log(filtered);
 
-// 3. polyfill for Reduce
+// 3. polyfill for Reduce and ReduceRight
 Array.prototype.myReduce = function (cb, initialVal) {
     let acc = initialVal;
     for (let i = 0; i < this.length; i++) {
@@ -53,6 +53,24 @@ const reduced = students.myReduce((acc, student, i, arr) => {
 }, 0);
 
 console.log(reduced);
+
+////////////////////////////////////////////////////////////////////
+Array.prototype.myReduceRight = function (cb, initialVal) {
+    let acc = initialVal;
+    for (let i = this.length - 1; i >= 0; i--) {
+        if (acc !== undefined) {
+            acc = cb(acc, this[i], i, this);
+        } else {
+            acc = this[i];
+        }
+    }
+    return acc;
+};
+
+// Usage example
+const arr = [1, 2, 3, 4];
+const sum = arr.myReduceRight((acc, curr) => acc + curr, 0);
+console.log(sum); // Output: 10
 
 // 4. polyfill for forEach
 Array.prototype.myForEach = function (callback) {
