@@ -84,12 +84,15 @@ students.myForEach((element) => {
 });
 
 // 5. polyfill for Push method
-Array.prototype.myPush = function (element) {
-    this[this.length] = element;
+Array.prototype.myPush = function (...elements) {
+    elements.forEach((element) => {
+        this[this.length] = element;
+    });
+
     return this.length;
 };
 
-console.log([1, 2, 3, 4, 5].myPush(6));
+console.log([1, 2, 3, 4, 5].myPush(6, 7, 8));
 
 // 6. polyfill for Pop method
 Array.prototype.myPop = function () {
@@ -200,6 +203,27 @@ Array.prototype.myFlat = function (depth) {
 
     return flatten(this, depth === undefined ? 1 : depth);
 };
+// OR WITHOUT USING REDUCE
+Array.prototype.myFlat = function (depth) {
+    const flatten = function (arr, depth) {
+        const result = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            const val = arr[i];
+            if (Array.isArray(val) && depth > 0) {
+                // Recursively flatten the array and reduce the depth
+                result.push(...flatten(val, depth - 1));
+            } else {
+                // Push non-array items directly
+                result.push(val);
+            }
+        }
+
+        return result;
+    };
+
+    return flatten(this, depth === undefined ? 1 : depth);
+};
 
 // 14. Polyfill for slice method
 Array.prototype.mySlice = function (start = 0, end = this.length) {
@@ -260,4 +284,22 @@ Array.prototype.mySplice = function (start, deleteCount, ...items) {
     }
 
     return removed;
+};
+
+// 16. Polyfill for flatMap:
+Array.prototype.myFlatMap = function (callback, thisArg) {
+    const result = [];
+
+    for (let i = 0; i < this.length; i++) {
+        const mappedValue = callback.call(thisArg, this[i], i, this);
+
+        // If the result is an array, concatenate it, otherwise push it directly i.e flat(1)
+        if (Array.isArray(mappedValue)) {
+            result.push(...mappedValue);
+        } else {
+            result.push(mappedValue);
+        }
+    }
+
+    return result;
 };
