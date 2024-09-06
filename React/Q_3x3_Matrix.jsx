@@ -8,45 +8,46 @@ On clicking after all the boxes, they are turned back to white in the same order
 import { useState } from "react";
 
 export default function Home() {
-  const [changed, setChanged] = useState([]);
+    const [changed, setChanged] = useState([]);
 
-  // create a new array of length matrixSize
-  const matrixSize = 9;
-  const arr = Array.from({ length: matrixSize }, (_, idx) => idx + 1);
+    // create a new array of length matrixSize
+    const matrixSize = 9;
+    const arr = Array.from({ length: matrixSize }, (_, idx) => idx + 1);
+    // const arr = [...Array(matrixSize).Keys()];
 
-  const revertColors = (i) => {
-    if (i > 0) {
-      setTimeout(() => {
-        setChanged((prev) => prev.slice(1));
-        revertColors(i - 1);
-      }, 1000);
-    }
-  };
+    const revertColors = (i) => {
+        if (i > 0) {
+            setTimeout(() => {
+                setChanged((prev) => prev.slice(1));
+                revertColors(i - 1);
+            }, 1000);
+        }
+    };
 
-  const changeColor = (id) => {
-    if (!changed.includes(id)) {
-      const newChanged = [...changed, id];
-      setChanged(newChanged);
+    const changeColor = (id) => {
+        if (!changed.includes(id)) {
+            const newChanged = [...changed, id];
+            setChanged(newChanged);
 
-      if (newChanged.length === matrixSize) {
-        revertColors(matrixSize);
-      }
-    }
-  };
+            if (newChanged.length === matrixSize) {
+                revertColors(matrixSize);
+            }
+        }
+    };
 
-  return (
-    <div className="mx-auto grid max-w-3xl grid-cols-3 grid-rows-3 place-items-center gap-6 pt-[150px]">
-      {arr.map((id) => (
-        <div
-          key={id}
-          className={`size-20 border border-black ${
-            changed.includes(id) ? "bg-green-700" : "bg-white"
-          }`}
-          onClick={() => changeColor(id)}
-        >
-          {id}
+    return (
+        <div className="mx-auto grid max-w-3xl grid-cols-3 grid-rows-3 place-items-center gap-6 pt-[150px]">
+            {arr.map((id) => (
+                <div
+                    key={id}
+                    className={`size-20 border border-black ${
+                        changed.includes(id) ? "bg-green-700" : "bg-white"
+                    }`}
+                    onClick={() => changeColor(id)}
+                >
+                    {id}
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 }
