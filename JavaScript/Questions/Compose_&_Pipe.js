@@ -4,10 +4,21 @@
 // - `pipe` applies functions from left to right.
 
 // ### Polyfill for `compose`
-
+// using reduce
 function compose(...fns) {
     return function (initialValue) {
         return fns.reduceRight((acc, fn) => fn(acc), initialValue);
+    };
+}
+
+// more detailed polyfill
+function compose(...fns) {
+    return function (initialValue) {
+        let result = initialValue;
+        for (let i = fns.length - 1; i >= 0; i--) {
+            result = fn[i](result);
+        }
+        return result;
     };
 }
 
@@ -26,10 +37,22 @@ console.log(composedFunction(5)); // Output: 12 (5 + 1 = 6, 6 * 2 = 12)
 //////////////////////////////////////////////////////////////////////////////
 
 // ### Polyfill for `pipe`
-
+//using reduce
 function pipe(...fns) {
     return function (initialValue) {
         return fns.reduce((acc, fn) => fn(acc), initialValue);
+    };
+}
+
+//more detailed
+// more detailed polyfill
+function pipe(...fns) {
+    return function (initialValue) {
+        let result = initialValue;
+        for (let i = 0; i < fns.length; i++) {
+            result = fn[i](result);
+        }
+        return result;
     };
 }
 
