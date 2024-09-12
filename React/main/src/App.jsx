@@ -1,10 +1,10 @@
 import "./App.css";
-import DragAndDropList from "./components/Drag_&_Drop_List";
+import ChessBoard from "../../ChessBoard";
 
 function App() {
     return (
         <div className="container mx-auto p-4 w-full h-full">
-            <DragAndDropList />
+            <ChessBoard />
         </div>
     );
 }
