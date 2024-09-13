@@ -12,7 +12,7 @@ import { useState, useRef } from "react";
 
 function Timer() {
     const [time, setTime] = useState(5);
-    // to preserve interval id during rerender 
+    // to preserve interval id during rerender
     let interval = useRef(null);
 
     const handleClick = () => {
@@ -30,6 +30,7 @@ function Timer() {
     const handleReset = () => {
         setTime(5);
         clearInterval(timeout.current);
+        timeout.current = null;
     };
 
     return (
