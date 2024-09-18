@@ -135,11 +135,11 @@ const promises = [
     Promise.resolve(3),
 ];
 
-Promise.myAllSettled(promises).then((results) => console.log(results));
-
-// Output:
-// [
-//   { status: "fulfilled", value: 1 },
-//   { status: "rejected", reason: "Error" },
-//   { status: "fulfilled", value: 3 }
-// ]
+// Promise.myAllSettled(promises).then((results) => console.log(results));
+// Promise.myRace(promises)
+//     .then((results) => console.log(results))
+//     .catch((err) => console.log(err));
+// Promise.myAll(promises)
+//     .then((results) => console.log(results))
+//     .catch((err) => console.log(err));
+// Promise.myAny(promises).then((results) => console.log(results));

@@ -114,6 +114,18 @@ Array.prototype.myGroupBy = function (callback) {
         return acc;
     }, {});
 };
+// Alternate without using reduce
+Array.prototype.myGroupBy = function (callback) {
+    let obj = {};
+    this.forEach((item) => {
+        let key = callback(item);
+        if (!obj[key]) {
+            obj[key] = [];
+        }
+        obj[key].push(item);
+        return obj;
+    });
+};
 
 // 8. polyfill for find and findIndex method
 Array.prototype.myFind = function (callback) {

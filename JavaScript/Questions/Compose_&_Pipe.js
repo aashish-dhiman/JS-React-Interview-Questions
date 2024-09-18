@@ -16,7 +16,7 @@ function compose(...fns) {
     return function (initialValue) {
         let result = initialValue;
         for (let i = fns.length - 1; i >= 0; i--) {
-            result = fn[i](result);
+            result = fns[i](result);
         }
         return result;
     };
@@ -50,7 +50,7 @@ function pipe(...fns) {
     return function (initialValue) {
         let result = initialValue;
         for (let i = 0; i < fns.length; i++) {
-            result = fn[i](result);
+            result = fns[i](result);
         }
         return result;
     };

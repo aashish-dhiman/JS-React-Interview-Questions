@@ -1,5 +1,5 @@
 // Method 1 -> using try catch
-async function fetchWithRetry(url, retries = 3, delay = 1000) {
+async function fetchWithRetry(url, retries = 3) {
     try {
         const response = await fetch(url);
 
@@ -11,7 +11,7 @@ async function fetchWithRetry(url, retries = 3, delay = 1000) {
     } catch (error) {
         if (retries > 0) {
             console.warn(`Retrying... (${retries - 1} attempts left)`);
-            return fetchWithRetry(url, retries - 1, delay);
+            return fetchWithRetry(url, retries - 1);
         } else {
             throw new Error(
                 `Failed after ${retries} retries: ${error.message}`
