@@ -1,8 +1,78 @@
 import "./App.css";
+import Auto_Increment_Counter from "./components/Auto_Increment_Counter";
+import AutoComplete from "./components/AutoComplete_Search";
+import Calculator from "./components/Calculator_using_Eval";
+import DragAndDropList from "./components/Drag_&_Drop_List";
+import LoginWithExpiry from "./components/Login_With_Expiry";
+import Timer from "./components/Timer_5_sec";
+import UndoRedo from "./components/UndoRedo";
+import ChessBoard from "./components/ChessBoard";
+import ChessBoardExtended from "../../ChessBoard_with_elephant&camel";
+import TrafficLight from "./components/TrafficLight";
+import Matrix from "./components/Q_3x3_Matrix";
+import Pagination from "./components/Pagination";
+import TicTacToe from "./components/TicTacToe_Configurable/TicTacToe";
+import Cookie from "./components/Cookie";
 
 function App() {
     return (
-        <div className="container mx-auto p-4 w-full h-full">
+        <div className="container mx-auto p-4 w-full h-full flex flex-col items-center justify-center gap-6 divide-y-2 ">
+            <div>
+                <h1>1. Auto Increment Counter</h1>
+                <Auto_Increment_Counter />
+            </div>
+            <div>
+                <h1>2. Auto Complete Search</h1>
+                <AutoComplete />
+            </div>
+            <div>
+                <h1>3. Calculator Using Eval fn in JS</h1>
+                <Calculator />
+            </div>
+            <div>
+                <h1>4. Drag And Drop List</h1>
+                <DragAndDropList />
+            </div>
+            <div>
+                <h1>5. Simple Login with Expiry</h1>
+                <LoginWithExpiry />
+            </div>
+            <div>
+                <h1>6. Timer</h1>
+                <Timer />
+            </div>
+            <div>
+                <h1>7. Undo Redo</h1>
+                <UndoRedo />
+            </div>
+            <div>
+                <h1>8. ChessBoard</h1>
+                <ChessBoard />
+            </div>
+            <div>
+                <h1>9. ChessBoard with elephant and camel positions</h1>
+                <ChessBoardExtended />
+            </div>
+            <div>
+                <h1>10. Traffic Light</h1>
+                <TrafficLight />
+            </div>
+            <div>
+                <h1>11. 3x3 Matrix Color Change on click and Reverse</h1>
+                <Matrix />
+            </div>
+            <div>
+                <h1>12. Pagination</h1>
+                <Pagination />
+            </div>
+            <div>
+                <h1>13. TicTacToe</h1>
+                <TicTacToe />
+            </div>
+            <div>
+                <h1>14. Set cookie using local storage</h1>
+                <Cookie />
+            </div>
         </div>
     );
 }
