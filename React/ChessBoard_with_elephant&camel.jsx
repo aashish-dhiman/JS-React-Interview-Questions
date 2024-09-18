@@ -5,21 +5,29 @@
   and if there is any cell where they may collide, highlight that with red.
 
   time: 45 minutes
+  Asked in INDmoney SDE Intern Frontend Round
  */
 
 import { useEffect, useState } from "react";
 
 function generateGrid(gridSize) {
-    let grid = [];
-    for (let i = 0; i < gridSize; i++) {
-        let row = [];
-        for (let j = 0; j < gridSize; j++) {
-            if ((i + j) % 2 == 0) row.push("white");
-            else row.push("black");
-        }
-        grid.push(row);
-    }
-    return grid;
+    // let grid = [];
+    // for (let i = 0; i < gridSize; i++) {
+    //     let row = [];
+    //     for (let j = 0; j < gridSize; j++) {
+    //         if ((i + j) % 2 == 0) row.push("white");
+    //         else row.push("black");
+    //     }
+    //     grid.push(row);
+    // }
+    // return grid;
+
+    // better way avoid looping->
+    return Array.from({ length: gridSize }, (_, i) => {
+        return Array.from({ length: gridSize }, (_, j) =>
+            (i + j) % 2 == 0 ? "white" : "black"
+        );
+    });
 }
 
 function generateRandomPoints() {
@@ -96,6 +104,7 @@ function generateDiagonals(n, x, y) {
 export default function ChessBoardExtended() {
     const gridSize = 8;
     const [board, setBoard] = useState(generateGrid(gridSize) || []);
+    console.log("board: ", board);
     const [elephant, setElephant] = useState(generateRandomPoints() || []);
     const [camel, setCamel] = useState(generateCamel(elephant) || []);
     const [diagonals, setDiagonals] = useState([]);
@@ -116,15 +125,14 @@ export default function ChessBoardExtended() {
                 return (
                     <div key={i} className="flex item-center flex-col ">
                         <div className="flex items-center">
-                            {row.map((_, j) => {
+                            {row.map((item, j) => {
                                 const isElephant =
                                     i === elephant[0] || j === elephant[1];
                                 const isCamel =
                                     i === camel[0] && j === camel[1];
                                 const isDiagonal = findIntersection(i, j);
                                 const isOverlapping =
-                                    (i === elephant[0] || j === elephant[1]) &&
-                                    findIntersection(i, j);
+                                    isElephant && findIntersection(i, j);
                                 const bgColor = isOverlapping
                                     ? "bg-red-500"
                                     : isDiagonal
@@ -136,7 +144,7 @@ export default function ChessBoardExtended() {
                                 return (
                                     <div
                                         key={j}
-                                        className={`${bgColor} w-16 h-16 border border-black`}
+                                        className={`${bgColor} w-16 h-16 border border-black text-sm`}
                                     >
                                         {i === elephant[0] && j === elephant[1]
                                             ? "Elephant"
