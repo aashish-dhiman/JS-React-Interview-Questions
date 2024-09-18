@@ -13,6 +13,7 @@ import Matrix from "./components/Q_3x3_Matrix";
 import Pagination from "./components/Pagination";
 import TicTacToe from "./components/TicTacToe_Configurable/TicTacToe";
 import Cookie from "./components/Cookie";
+import InfiniteScroll from "./components/Infinite_Fetch_Intersection";
 
 function App() {
     return (
@@ -72,6 +73,10 @@ function App() {
             <div>
                 <h1>14. Set cookie using local storage</h1>
                 <Cookie />
+            </div>
+            <div className="max-h-[400px] overflow-y-scroll">
+                <h1>14. Set cookie using local storage</h1>
+                <InfiniteScroll />
             </div>
         </div>
     );
