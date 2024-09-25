@@ -7,13 +7,17 @@ import LoginWithExpiry from "./components/Login_With_Expiry";
 import Timer from "./components/Timer_5_sec";
 import UndoRedo from "./components/UndoRedo";
 import ChessBoard from "./components/ChessBoard";
-import ChessBoardExtended from "../../ChessBoard_with_elephant&camel";
+import ChessBoardExtended from "./components/ChessBoard_with_elephant&camel";
 import TrafficLight from "./components/TrafficLight";
 import Matrix from "./components/Q_3x3_Matrix";
 import Pagination from "./components/Pagination";
 import TicTacToe from "./components/TicTacToe_Configurable/TicTacToe";
 import Cookie from "./components/Cookie";
 import InfiniteScroll from "./components/Infinite_Fetch_Intersection";
+import GridBorderDiagonal from "./components/GridBorderDiagonal";
+import SnakeLadderGame from "./components/Snake_&_Ladder.jsx";
+import NestedCheckboxes from "./components/NestedCheckBox.jsx";
+import SelectAllComponent from "./components/SelectCheckBox.jsx";
 
 function App() {
     return (
@@ -63,7 +67,7 @@ function App() {
                 <Matrix />
             </div>
             <div>
-                <h1>12. Pagination</h1>
+                <h1>12. Pagination with debouncing</h1>
                 <Pagination />
             </div>
             <div>
@@ -75,8 +79,24 @@ function App() {
                 <Cookie />
             </div>
             <div className="max-h-[400px] overflow-y-scroll">
-                <h1>14. Set cookie using local storage</h1>
+                <h1>14. Infinite Scroll</h1>
                 <InfiniteScroll />
+            </div>
+            <div>
+                <h1>15. Color Border and Diagonal of Grid</h1>
+                <GridBorderDiagonal />
+            </div>
+            <div>
+                <h1>16. Snake and Ladder (2 Players)</h1>
+                <SnakeLadderGame />
+            </div>
+            <div>
+                <h1>17. Recursive Nested Checkbox (CARS 24)</h1>
+                <NestedCheckboxes />
+            </div>
+            <div>
+                <h1>18. Select All Checkbox</h1>
+                <SelectAllComponent />
             </div>
         </div>
     );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /**
  Q. Create a 8*8 grid like chess and generate random points for elephant and camel and make sure they are not same;
   highlight the possible moves of elephant with yellow color;
@@ -104,7 +105,6 @@ function generateDiagonals(n, x, y) {
 export default function ChessBoardExtended() {
     const gridSize = 8;
     const [board, setBoard] = useState(generateGrid(gridSize) || []);
-    console.log("board: ", board);
     const [elephant, setElephant] = useState(generateRandomPoints() || []);
     const [camel, setCamel] = useState(generateCamel(elephant) || []);
     const [diagonals, setDiagonals] = useState([]);
@@ -119,37 +119,43 @@ export default function ChessBoardExtended() {
         return diagonals.some((point) => point[0] === i && point[1] === j);
     };
 
+    const getBgColor = (i, j) => {
+        const isElephantPath = i === elephant[0] || j === elephant[1];
+
+        const isDiagonal = findIntersection(i, j);
+        const isOverlapping = isElephantPath && findIntersection(i, j);
+        const bgColor = isOverlapping
+            ? "bg-red-500"
+            : isDiagonal
+            ? "bg-blue-700"
+            : isElephantPath
+            ? "bg-yellow-600"
+            : "";
+        return bgColor;
+    };
+
     return (
         <div className="w-fit mx-auto p-10">
             {board?.map((row, i) => {
                 return (
                     <div key={i} className="flex item-center flex-col ">
                         <div className="flex items-center">
-                            {row.map((_, j) => {
-                                const isElephant =
-                                    i === elephant[0] || j === elephant[1];
+                            {row.map((item, j) => {
                                 const isCamel =
                                     i === camel[0] && j === camel[1];
-                                const isDiagonal = findIntersection(i, j);
-                                const isOverlapping =
-                                    (i === elephant[0] || j === elephant[1]) &&
-                                    findIntersection(i, j);
-                                const bgColor = isOverlapping
-                                    ? "bg-red-500"
-                                    : isDiagonal
-                                    ? "bg-blue-700"
-                                    : isElephant
-                                    ? "bg-yellow-600"
-                                    : "";
-
+                                const isElephant =
+                                    i === elephant[0] && j === elephant[1];
                                 return (
                                     <div
                                         key={j}
-                                        className={`${bgColor} w-16 h-16 border border-black text-sm`}
+                                        className={`${getBgColor(
+                                            i,
+                                            j
+                                        )} w-16 h-16 border border-black text-sm`}
                                     >
-                                        {i === elephant[0] && j === elephant[1]
+                                        {isElephant
                                             ? "Elephant"
-                                            : i === camel[0] && j === camel[1]
+                                            : isCamel
                                             ? "Camel"
                                             : ""}
                                     </div>

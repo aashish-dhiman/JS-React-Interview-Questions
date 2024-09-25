@@ -119,6 +119,21 @@ export default function ChessBoardExtended() {
         return diagonals.some((point) => point[0] === i && point[1] === j);
     };
 
+    const getBgColor = (i, j) => {
+        const isElephantPath = i === elephant[0] || j === elephant[1];
+
+        const isDiagonal = findIntersection(i, j);
+        const isOverlapping = isElephantPath && findIntersection(i, j);
+        const bgColor = isOverlapping
+            ? "bg-red-500"
+            : isDiagonal
+            ? "bg-blue-700"
+            : isElephantPath
+            ? "bg-yellow-600"
+            : "";
+        return bgColor;
+    };
+
     return (
         <div className="w-fit mx-auto p-10">
             {board?.map((row, i) => {
@@ -126,29 +141,21 @@ export default function ChessBoardExtended() {
                     <div key={i} className="flex item-center flex-col ">
                         <div className="flex items-center">
                             {row.map((item, j) => {
-                                const isElephant =
-                                    i === elephant[0] || j === elephant[1];
                                 const isCamel =
                                     i === camel[0] && j === camel[1];
-                                const isDiagonal = findIntersection(i, j);
-                                const isOverlapping =
-                                    isElephant && findIntersection(i, j);
-                                const bgColor = isOverlapping
-                                    ? "bg-red-500"
-                                    : isDiagonal
-                                    ? "bg-blue-700"
-                                    : isElephant
-                                    ? "bg-yellow-600"
-                                    : "";
-
+                                const isElephant =
+                                    i === elephant[0] && j === elephant[1];
                                 return (
                                     <div
                                         key={j}
-                                        className={`${bgColor} w-16 h-16 border border-black text-sm`}
+                                        className={`${getBgColor(
+                                            i,
+                                            j
+                                        )} w-16 h-16 border border-black text-sm`}
                                     >
-                                        {i === elephant[0] && j === elephant[1]
+                                        {isElephant
                                             ? "Elephant"
-                                            : i === camel[0] && j === camel[1]
+                                            : isCamel
                                             ? "Camel"
                                             : ""}
                                     </div>
