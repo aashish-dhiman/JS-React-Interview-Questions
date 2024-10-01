@@ -18,6 +18,7 @@ import GridBorderDiagonal from "./components/GridBorderDiagonal";
 import SnakeLadderGame from "./components/Snake_&_Ladder.jsx";
 import NestedCheckboxes from "./components/NestedCheckBox.jsx";
 import SelectAllComponent from "./components/SelectCheckBox.jsx";
+import CustomPreviousHook from "../../Custom Hooks/usePreviousValue/UsePreviousValueHook.jsx";
 
 function App() {
     return (
@@ -97,6 +98,10 @@ function App() {
             <div>
                 <h1>18. Select All Checkbox</h1>
                 <SelectAllComponent />
+            </div>
+            <div>
+                <h1>19. Custom usePrevious Hook to get previous value of a state</h1>
+                <CustomPreviousHook />
             </div>
         </div>
     );
