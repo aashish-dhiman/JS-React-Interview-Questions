@@ -19,6 +19,8 @@ import SnakeLadderGame from "./components/Snake_&_Ladder.jsx";
 import NestedCheckboxes from "./components/NestedCheckBox.jsx";
 import SelectAllComponent from "./components/SelectCheckBox.jsx";
 import CustomPreviousHook from "../../Custom Hooks/usePreviousValue/UsePreviousValueHook.jsx";
+import OtpLogin from "./components/OtpLogin.jsx";
+import TimerWithUseEffect from "./components/TimerWithUseEffect.jsx";
 
 function App() {
     return (
@@ -26,6 +28,10 @@ function App() {
             <div>
                 <h1>1. Auto Increment Counter</h1>
                 <Auto_Increment_Counter />
+            </div>
+            <div>
+                <h1>Auto Increment Counter using UseEffect</h1>
+                <TimerWithUseEffect />
             </div>
             <div>
                 <h1>2. Auto Complete Search</h1>
@@ -100,8 +106,14 @@ function App() {
                 <SelectAllComponent />
             </div>
             <div>
-                <h1>19. Custom usePrevious Hook to get previous value of a state</h1>
+                <h1>
+                    19. Custom usePrevious Hook to get previous value of a state
+                </h1>
                 <CustomPreviousHook />
+            </div>
+            <div>
+                <h1>20. OTP LogIn with auto focus</h1>
+                <OtpLogin />
             </div>
         </div>
     );
