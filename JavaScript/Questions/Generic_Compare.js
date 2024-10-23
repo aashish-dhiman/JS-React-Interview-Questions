@@ -1,7 +1,7 @@
 // Implement a generic compare function in javascript to compare two values and values can be nested objects, arrays, strings, and can be a mix of all data types
 
 function compare(val1, val2) {
-    // Check if both are objects or arrays
+    // Check if both are objects or arrays and also not null as null type is also object
     if (
         typeof val1 === "object" &&
         val1 !== null &&

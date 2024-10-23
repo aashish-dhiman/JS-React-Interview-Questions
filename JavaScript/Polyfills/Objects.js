@@ -1,4 +1,5 @@
 // Object.assign
+// Object.prototype.hasOwnProperty.call(obj, key) ensures that the code only returns the keys that are the object's own properties, not the ones inherited from its prototype chain
 Object.assign = function (target, ...sources) {
     if (target == null) {
         throw new TypeError("Cannot convert undefined or null to object");
@@ -20,6 +21,7 @@ Object.assign = function (target, ...sources) {
 };
 
 // Object.keys
+// Object.prototype.hasOwnProperty.call(obj, key) ensures that the code only returns the keys that are the object's own properties, not the ones inherited from its prototype chain
 Object.keys = function (obj) {
     if (obj === null || typeof obj !== "object") {
         throw new TypeError("Object.keys called on non-object");
@@ -36,6 +38,7 @@ Object.keys = function (obj) {
 };
 
 // Object.values
+// Object.prototype.hasOwnProperty.call(obj, key) ensures that the code only returns the keys that are the object's own properties, not the ones inherited from its prototype chain
 Object.values = function (obj) {
     if (obj === null || typeof obj !== "object") {
         throw new TypeError("Object.values called on non-object");
@@ -52,6 +55,7 @@ Object.values = function (obj) {
 };
 
 // Object.entries
+// Object.prototype.hasOwnProperty.call(obj, key) ensures that the code only returns the keys that are the object's own properties, not the ones inherited from its prototype chain
 Object.entries = function (obj) {
     if (obj === null || typeof obj !== "object") {
         throw new TypeError("Object.entries called on non-object");
