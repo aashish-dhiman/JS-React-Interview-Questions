@@ -17,6 +17,7 @@ const fetchData = (page) => {
 const Pagination = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [data, setData] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [totalPage, setTotalPage] = useState(10);
     const [isLoading, setIsLoading] = useState(false);
 

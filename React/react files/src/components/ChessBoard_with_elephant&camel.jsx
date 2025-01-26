@@ -104,7 +104,7 @@ function generateDiagonals(n, x, y) {
 
 export default function ChessBoardExtended() {
     const gridSize = 8;
-    const [board, setBoard] = useState(generateGrid(gridSize) || []);
+    const board = generateGrid(gridSize);
     const [elephant, setElephant] = useState(generateRandomPoints() || []);
     const [camel, setCamel] = useState(generateCamel(elephant) || []);
     const [diagonals, setDiagonals] = useState([]);

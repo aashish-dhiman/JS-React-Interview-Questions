@@ -21,6 +21,37 @@ import SelectAllComponent from "./components/SelectCheckBox.jsx";
 import CustomPreviousHook from "../../Custom Hooks/usePreviousValue/UsePreviousValueHook.jsx";
 import OtpLogin from "./components/OtpLogin.jsx";
 import TimerWithUseEffect from "./components/TimerWithUseEffect.jsx";
+import FileExplorer from "./components/File_Explorer.jsx";
+
+const fileStructure = [
+  {
+    id: 1,
+    name: "Documents",
+    type: "folder",
+    children: [
+      { id: 2, name: "Resume.docx", type: "file" },
+      {
+        id: 3,
+        name: "Projects",
+        type: "folder",
+        children: [
+          { id: 4, name: "React Project", type: "file" },
+          { id: 5, name: "Node.js Project", type: "file" },
+        ],
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Images",
+    type: "folder",
+    children: [
+      { id: 7, name: "Vacation.jpg", type: "file" },
+      { id: 8, name: "Family.png", type: "file" },
+    ],
+  },
+];
+
 
 function App() {
     return (
@@ -114,6 +145,10 @@ function App() {
             <div>
                 <h1>20. OTP LogIn with auto focus</h1>
                 <OtpLogin />
+            </div>
+            <div>
+                <h1>21. File Explorer</h1>
+                <FileExplorer files={fileStructure} />
             </div>
         </div>
     );
