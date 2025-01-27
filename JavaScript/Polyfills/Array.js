@@ -123,8 +123,8 @@ Array.prototype.myGroupBy = function (callback) {
             obj[key] = [];
         }
         obj[key].push(item);
-        return obj;
     });
+    return obj;
 };
 
 // 8. polyfill for find and findIndex method

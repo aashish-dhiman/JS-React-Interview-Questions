@@ -1,5 +1,6 @@
+// Asked in multiple companies like UBER, CRED, CARS 24, MNCs
 function deepClone(value) {
-    // Handle primitive types and functions
+    // Handle primitive types and functions also null case as type of null is also object
     if (typeof value !== "object" || value === null) {
         return value;
     }
